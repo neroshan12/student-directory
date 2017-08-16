@@ -8,6 +8,13 @@ def input_students
   name = gets.chomp
 
   while !name.empty? do                              # if name is not empty then execute the do block, if not jump to line 17
+    puts "Cohort?"
+    cohort = gets.chomp.to_sym
+
+    if cohort.empty?
+      cohort= :undecided
+    end
+
     puts "Hobbies?"
     hobbies = gets.chomp
 
@@ -17,7 +24,7 @@ def input_students
     puts "Age"
     age = gets.chomp
 
-    students << {name: name, hobbies: hobbies, height: height, age: age, cohort: :november}      # add the student hash to the array
+    students << {name: name, hobbies: hobbies, height: height, age: age, cohort: cohort}      # add the student hash to the array
     puts "Now we have #{students.count} students"
     name = gets.chomp                                 # get another name from the user
   end
@@ -32,7 +39,7 @@ end
 def print(students)
   i = 0
   while i < students.length do
-    puts "#{i + 1}. #{students[i][:name]}, #{students[i][:hobbies]}, #{students[i][:height]}, #{students[i][:age]}, (#{students[i][:cohort]} cohort)".center(50) # => 1. (first student name) (first student cohort) and then will repeat while i is less than length of the array
+    puts "#{i + 1}. #{students[i][:name]}, #{students[i][:hobbies]}, #{students[i][:height]}, #{students[i][:age]}, (#{students[i][:cohort]})".center(50) # => 1. (first student name) (first student cohort) and then will repeat while i is less than length of the array
   i += 1
   end
 end
