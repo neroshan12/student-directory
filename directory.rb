@@ -7,16 +7,16 @@ def input_students
   puts "First name?"
   name = gets.chomp
 
-  puts "Hobbies?"
-  hobbies = gets.chomp
-
-  puts "Height?"
-  height = gets.chomp
-
-  puts "Age"
-  age = gets.chomp
-
   while !name.empty? do                              # if name is not empty then execute the do block, if not jump to line 17
+    puts "Hobbies?"
+    hobbies = gets.chomp
+
+    puts "Height?"
+    height = gets.chomp
+
+    puts "Age"
+    age = gets.chomp
+
     students << {name: name, hobbies: hobbies, height: height, age: age, cohort: :november}      # add the student hash to the array
     puts "Now we have #{students.count} students"
     name = gets.chomp                                 # get another name from the user
@@ -25,20 +25,24 @@ def input_students
 end
 
 def print_header
-  puts "The students of Villains Academy"
-  puts "-------------"
+  puts "The students of Villains Academy".center(50)
+  puts "-------------".center(50)
 end
 
 def print(students)
   i = 0
   while i < students.length do
-    puts "#{i + 1}. #{students[i][:name]}, #{students[i][:hobbies]}, #{students[i][:height]}, #{students[i][:age]}, (#{students[i][:cohort]} cohort)" # => 1. (first student name) (first student cohort) and then will repeat while i is less than length of the array
+    puts "#{i + 1}. #{students[i][:name]}, #{students[i][:hobbies]}, #{students[i][:height]}, #{students[i][:age]}, (#{students[i][:cohort]} cohort)".center(50) # => 1. (first student name) (first student cohort) and then will repeat while i is less than length of the array
   i += 1
   end
 end
 
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students"
+  if students.count == 1
+    puts "Overall, we have 1 great student".center(50)
+  else
+    puts "Overall, we have #{students.count} great students".center(50)
+  end
 end
 
 students = input_students
