@@ -21,8 +21,10 @@ def print_header
 end
 
 def print(students)
-  students.each_with_index do |student, index|
-    puts "#{index+1}. #{student[:name]} (#{student[:cohort]} cohort)" if student[:name][0].capitalize == "N" && student[:name].length < 12
+  i = 0
+  while i < students.length do
+    puts "#{i + 1}. #{students[i][:name]} (#{students[i][:cohort]} cohort)" # => 1. (first student name) (first student cohort) and then will repeat while i is less than length of the array
+  i += 1
   end
 end
 
