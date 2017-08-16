@@ -5,28 +5,28 @@ def input_students
   students = []                                   # create an empty array
 
   puts "First name?"
-  name = gets.chomp
+  name = gets.delete("\n")
 
   while !name.empty? do                              # if name is not empty then execute the do block, if not jump to line 17
     puts "Cohort?"
-    cohort = gets.chomp.to_sym
+    cohort = gets.delete("\n").to_sym
 
     if cohort.empty?
       cohort= :undecided
     end
 
     puts "Hobbies?"
-    hobbies = gets.chomp
+    hobbies = gets.delete("\n")
 
     puts "Height?"
-    height = gets.chomp
+    height = gets.delete("\n")
 
     puts "Age"
-    age = gets.chomp
+    age = gets.delete("\n")
 
     students << {name: name, hobbies: hobbies, height: height, age: age, cohort: cohort}      # add the student hash to the array
     puts "Now we have #{students.count} students"
-    name = gets.chomp                                 # get another name from the user
+    name = gets.delete("\n")                                 # get another name from the user
   end
   students                                            # return the array of students
 end
