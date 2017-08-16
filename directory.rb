@@ -37,10 +37,9 @@ def print_header
 end
 
 def print(students)
-  i = 0
-  while i < students.length do
-    puts "#{i + 1}. #{students[i][:name]}, #{students[i][:hobbies]}, #{students[i][:height]}, #{students[i][:age]}, (#{students[i][:cohort]})".center(50) # => 1. (first student name) (first student cohort) and then will repeat while i is less than length of the array
-  i += 1
+  students.sort_by! {|student| student[:cohort]}
+  students.each_with_index do |student, i|
+    puts ("#{i + 1}. #{students[i][:name]}, #{students[i][:cohort]}, #{students[i][:hobbies]}, #{students[i][:height]}, #{students[i][:age]}" ).center(50)
   end
 end
 
