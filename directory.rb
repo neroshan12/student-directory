@@ -28,7 +28,7 @@ def input_students
     puts "Now we have #{students.count} students"
     name = gets.delete("\n")                                 # get another name from the user
   end
-  students                                            # return the array of students
+  students                                                    # return the array of students
 end
 
 def print_header
@@ -37,9 +37,11 @@ def print_header
 end
 
 def print(students)
-  students.sort_by! {|student| student[:cohort]}
-  students.each_with_index do |student, i|
-    puts ("#{i + 1}. #{students[i][:name]}, #{students[i][:cohort]}, #{students[i][:hobbies]}, #{students[i][:height]}, #{students[i][:age]}" ).center(50)
+  if !students.empty?
+        students.sort_by! {|student| student[:cohort]}
+        students.each_with_index do |student, i|
+      puts ("#{i + 1}. #{students[i][:name]}, #{students[i][:cohort]}, #{students[i][:hobbies]}, #{students[i][:height]}, #{students[i][:age]}" ).center(50)
+    end
   end
 end
 
