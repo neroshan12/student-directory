@@ -32,6 +32,10 @@ def process(selection)
   end
 end
 
+def push_to_students(name, hobbies, height, age, cohort)
+  @students << {name: name, hobbies: hobbies, height: height, age: age, cohort: cohort}
+end
+
 def input_students
   puts "Please enter the following information for the students (to finish, just hit return twice) "
   puts "First name?"
@@ -54,7 +58,8 @@ def input_students
     puts "Age"
     age = STDIN.gets.chomp
 
-    @students << {name: name, hobbies: hobbies, height: height, age: age, cohort: cohort}      # add the student hash to the array
+    push_to_students(name, hobbies, height, age, cohort)
+          # add the student hash to the array
     puts "Now we have #{@students.count} students"
     name = STDIN.gets.chomp                               # get another name from the user
   end
@@ -99,7 +104,7 @@ def load_students(filename = "students.csv")  # will load filename, and if no va
   file = File.open(filename, "r")
   file.readlines.each do |line|
   name, cohort, hobbies, height, age = line.chomp.split(',')    # Variable assignment
-    @students << {name: name, cohort: cohort.to_sym, hobbies: hobbies, height: height, age: age }   # Create a hash
+    push_to_students(name, hobbies, height, age, cohort)
   end
   file.close
 end
