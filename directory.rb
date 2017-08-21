@@ -4,8 +4,8 @@ def print_menu
   puts "Please choose from the following menu: "
   puts "1. Input the students"
   puts "2. Show the students"
-  puts "3. Save the list to students.csv"
-  puts "4. Load the list from students.csv"
+  puts "3. Save the list to a file"
+  puts "4. Load the list from a file (default = students.csv)"
   puts "9. Exit"
 end
 
@@ -97,13 +97,15 @@ def print_footer
 end
 
 def save_students
-  file = File.open("students.csv", "w")     # Open the file for writing, When we open a file, the open() method returns us a reference to the file that we can save it a variable called "file"
-  @students.each do |student|               # Then we iterate over the array of students, processing one student at a time.
-    student_data = [student[:name], student[:cohort], student[:hobbies], student[:height], student[:age]]   # Array created
-    csv_line = student_data.join(", ")       # Joins all elements of the array together
-    file.puts csv_line                      # Writes to the csv file not screen
+  puts "Please specify a filename?"
+  filename = gets.chomp
+  file = File.open(filename, "w")                                               # Open the file for writing, When we open a file, the open() method returns us a reference to the file that we can save it a variable called "file"
+  @students.each do |student|                                                          # Then we iterate over the array of students, processing one student at a time.
+    student_data = [student[:name], student[:cohort], student[:hobbies], student[:height], student[:age]]              # Array created
+    csv_line = student_data.join(", ")                                                  # Joins all elements of the array together
+    file.puts csv_line                                                                  # Writes to the csv file not screen
   end
-  file.close                                # Everytime you open a file, it needs to be closed
+  file.close                                                                            # Everytime you open a file, it needs to be closed
 end
 
 def load_students(filename = "students.csv")  # will load filename, and if no value is given the default will be loaded (students.csv)
