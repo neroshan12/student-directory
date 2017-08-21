@@ -99,22 +99,22 @@ end
 def save_students
   puts "Please specify a filename?"
   filename = gets.chomp
-  file = File.open(filename, "w")                                               # Open the file for writing, When we open a file, the open() method returns us a reference to the file that we can save it a variable called "file"
-  @students.each do |student|                                                          # Then we iterate over the array of students, processing one student at a time.
+  file = File.open(filename, "w") do |file|                  # Open the file for writing, When we open a file, the open() method returns us a reference to the file that we can save it a variable called "file"
+  @students.each do |student|                                # Then we iterate over the array of students, processing one student at a time.
     student_data = [student[:name], student[:cohort], student[:hobbies], student[:height], student[:age]]              # Array created
-    csv_line = student_data.join(", ")                                                  # Joins all elements of the array together
-    file.puts csv_line                                                                  # Writes to the csv file not screen
+    csv_line = student_data.join(", ")                       # Joins all elements of the array together
+    file.puts csv_line                                       # Writes to the csv file not screen
+    end
   end
-  file.close                                                                            # Everytime you open a file, it needs to be closed
 end
 
 def load_students(filename = "students.csv")  # will load filename, and if no value is given the default will be loaded (students.csv)
-  file = File.open(filename, "r")
+  file = File.open(filename, "r") do |file|
   file.readlines.each do |line|
   name, cohort, hobbies, height, age = line.chomp.split(',')    # Variable assignment
     push_to_students(name, hobbies, height, age, cohort)
+    end
   end
-  file.close
 end
 
 def try_load_students
