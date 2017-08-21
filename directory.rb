@@ -18,11 +18,21 @@ end
 
 def process(selection)
   case selection
-    when "1" then input_students
-    when "2" then show_students
-    when "3" then save_students
-    when "4" then load_students
-    when "9" then exit # this will cause the program to terminate
+    when "1"
+      puts "Please follow the instructions..."
+      input_students
+    when "2"
+      puts "The students in the directory are: "
+      show_students
+    when "3"
+      puts "Students have been saved."
+      save_students
+    when "4"
+      puts "Student Directory has been been loaded"
+      load_students
+    when "9"
+      puts "You have exited the Student Directory."
+      exit # this will cause the program to terminate
     else
       puts "I don't know what you meant, try again"
   end
